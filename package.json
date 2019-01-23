@@ -1,0 +1,32 @@
+{
+  "name": "Nodepop",
+  "version": "1.0.0",
+  "description": "Realización de la práctica de fundamentos de node.js del bootcamp web de KeepCoding",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index",
+    "install_db": "node ./install_db"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bri06/bootcampweb-mod-fundamentos-node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bri06/bootcampweb-mod-fundamentos-node/issues"
+  },
+  "homepage": "https://github.com/bri06/bootcampweb-mod-fundamentos-node#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "bulma": "^0.7.2",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.5",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
