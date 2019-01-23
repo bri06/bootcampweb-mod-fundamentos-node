@@ -1,0 +1,20 @@
+extends layout.pug
+
+block hero
+    section.hero.is-dark.is-bold
+        .hero-body
+            .container
+                h1.title Nodepop
+                h2.subtitle Vista basica para nuestro API fundamentos node
+block content
+    .container(style="flex: 1; padding: 50px 0;")
+        .columns.is-multiline
+            each anuncio in anuncios
+                .column.is-one-quarter
+                    .card
+                        .card-image
+                            figure.image(style="height: 350px")
+                                img(src=anuncio.foto style="height: 100%; object-fit: cover")
+                        .card-content
+                          strong= anuncio.nombre
+                          p= `${anuncio.precio} €`
