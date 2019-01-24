@@ -1,15 +1,14 @@
 const express = require('express');
 const router = express.Router();
-// const anunciosMocks = require('../utils/mocks/anuncios');
-const AnuncioService = require('../../services/anuncios');
-const anuncioService = AnuncioService();
+const Anuncio = require('../../models/Anuncio');
 
 router.get('/', async (req, res, next) => {
-  const { tags } = req.query;
   try {
-    const anuncios = await anuncioService.getAnuncios({tags});
-    res.render('index', {anuncios});
-  }catch(err) {
+    const { nombre, venta, tag, precio } = req.query;
+    const anuncioFiltrado = Anuncio.filtrado(nombre, venta, tag, precio);
+    const anuncios = await Anuncio.listar(anuncioFiltrado);
+    res.render('index', { anuncios });
+  } catch (err) {
     next(err);
   }
 });
