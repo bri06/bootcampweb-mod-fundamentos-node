@@ -4,11 +4,10 @@ module.exports.getAnuncios = async (req, res, next) => {
   try {
     const filter = {};
     const { nombre, venta, tag, precio } = req.query;
-
     if (nombre) filter.nombre = new RegExp('^' + req.query.nombre, "i");
-    if (venta) filter.venta = (venta.toLowerCase() == 'true'); //REVISAR OTRA VEZ
+    if (venta) filter.venta = (venta.toLowerCase() == 'true'); 
     if (tag) filter.tags = { $in: [tag] };
-    if (precio) { //REFACTORIZAR
+    if (precio) {
       const [gte, lte] = precio.split('-');
       if (gte && lte) {
         filter.precio = { $gte: gte, $lte: lte };
@@ -23,26 +22,24 @@ module.exports.getAnuncios = async (req, res, next) => {
     const anuncios = await Anuncio.listar(filter);
     res.status(200).json({
       data: anuncios,
-      message: 'lista de anuncios'
+      message: 'Lista de anuncios'
     });
   } catch (err) {
     next(err);
   }
 };
 
-module.exports.createAnuncio = (req, res, next) => {
-  const { body: data } = req;
-
-  let anuncio = new Anuncio(data);
-
-  anuncio.save((err, anuncio) => {
-    if (err) {
-      return res.status(500).send(err.message);
-    }
+module.exports.createAnuncio = async (req, res, next) => {
+  try {
+    const { body: data } = req;
+    const anuncio = new Anuncio(data);
+  
+    const anuncioCreado = await anuncio.save();
     res.status(201).json({
-      data: anuncio,
-      message: 'anuncio creado'
+      data: anuncioCreado,
+      message: 'Anuncio creado'
     });
-
-  });
+  } catch (err) {
+    next(err);
+  }
 };
