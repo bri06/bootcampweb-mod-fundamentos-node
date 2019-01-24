@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const controllerAnuncio = require('../../services/anuncios');
+const { getAnuncios, createAnuncio } = require('../../controller/anuncios');
 
 // Obtener todos los anuncios
-router.get('/',controllerAnuncio.getAnuncios);
+router.get('/', getAnuncios);
 
 // Guardar Anuncio
-router.post('/save', controllerAnuncio.createAnuncio);
+router.post('/save', createAnuncio);
 
 module.exports = router;
