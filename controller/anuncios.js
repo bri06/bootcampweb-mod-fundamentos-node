@@ -2,9 +2,9 @@ const Anuncio = require('../models/Anuncio');
 
 module.exports.getAnuncios = async (req, res, next) => {
   try {
-    let { nombre, venta, tag, precio, skip, limit, fields, sort } = req.query;
+    let { nombre, venta, tag, precio, skip, limit, sort } = req.query;
     const anuncioFiltrado = Anuncio.filtrado(nombre, venta, tag, precio);
-    const anuncios = await Anuncio.listar(anuncioFiltrado, skip, limit, fields, sort );
+    const anuncios = await Anuncio.listar(anuncioFiltrado, parseInt(limit), parseInt(skip), sort );
     res.status(200).json({
       results: anuncios,
       message: 'Lista de anuncios'
@@ -17,8 +17,9 @@ module.exports.getAnuncios = async (req, res, next) => {
 module.exports.listarTags = async (req, res, next) => {
   try {
     const listaTags = await Anuncio.find({}, {'tags': 1});
+    const tags = getTags(listaTags);
     res.status(200).json({
-      results: listaTags,
+      results: tags,
       message: 'Lista de tags'
     });
   } catch (err) {
@@ -40,3 +41,10 @@ module.exports.createAnuncio = async (req, res, next) => {
     next(err);
   }
 };
+
+const getTags = listaTags => {
+  let arrTags = [];
+  listaTags.forEach(data => data.tags.forEach(tag => arrTags.push(tag))); //Nos devolvera tags pero repetidos
+  return arrTags;
+}
+
