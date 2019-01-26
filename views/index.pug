@@ -13,8 +13,9 @@ block content
                 .column.is-one-quarter
                     .card
                         .card-image
-                            figure.image(style="height: 350px")
+                            figure.image(style="height: 500px; background-color: lightgray; object-fit: cover")
                                 img(src=anuncio.foto style="height: 100%; object-fit: cover")
                         .card-content
                           strong= anuncio.nombre
                           p= `${anuncio.precio} €`
+                          article= anuncio.tags
