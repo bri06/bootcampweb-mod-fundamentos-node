@@ -54,8 +54,4 @@ function isAPIRequest(req) {
   return req.originalUrl.indexOf('/apiv') === 0;
 }
 
-// server initialization
-const server = app.listen(3000, () => {
-  console.log(`Listening on http://localhost:${server.address().port}`);
-  console.log(`You can visit the website in http://localhost:${server.address().port}/anuncios`);
-});
+module.exports = app;
