@@ -8,9 +8,9 @@ const anuncioSchema = mongoose.Schema({
   tags: [String]
 });
 
-anuncioSchema.statics.listar = (filter, limit, skip, sort) => {
+anuncioSchema.statics.listar = (filter, limit, start, sort) => {
   const query = Anuncio.find(filter)
-  query.skip(skip)
+  query.skip(start)
   query.limit(limit)
   query.sort(sort)
   return query.exec();

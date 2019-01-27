@@ -57,7 +57,7 @@ Ruta API:
   http://localhost:8000/api/anuncios
 
 Ruta publica:
-  http://localhost:3000/api/anuncios
+  http://localhost:3000/anuncios
 
 Listar tags:
   http://localhost:3000/api/anuncios/tags

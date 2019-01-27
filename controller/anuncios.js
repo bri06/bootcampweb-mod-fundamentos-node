@@ -2,9 +2,9 @@ const Anuncio = require('../models/Anuncio');
 
 module.exports.getAnuncios = async (req, res, next) => {
   try {
-    let { nombre, venta, tag, precio, skip, limit, sort } = req.query;
+    let { nombre, venta, tag, precio, start, limit, sort } = req.query;
     const anuncioFiltrado = Anuncio.filtrado(nombre, venta, tag, precio);
-    const anuncios = await Anuncio.listar(anuncioFiltrado, parseInt(limit), parseInt(skip), sort);
+    const anuncios = await Anuncio.listar(anuncioFiltrado, parseInt(limit), parseInt(start), sort);
     res.status(200).json({
       results: anuncios,
       message: 'Lista de anuncios'
