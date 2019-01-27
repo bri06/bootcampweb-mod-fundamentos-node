@@ -33,6 +33,12 @@ app.get('/', (req, res, next) => {
   res.redirect('/anuncios');
 });
 
+app.use(function(req, res, next) {
+  const err = new Error(404);
+  err.status = 404;
+  return next(err);
+});
+
 // Error handler
 app.use((err, req, res, next) => {
   if (err.array) {
@@ -46,7 +52,10 @@ app.use((err, req, res, next) => {
     return;
   }
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get('env') === 'development' ? err : {
+    message: err.message,
+    status: err.status
+  };
   res.render('error');
 });
 

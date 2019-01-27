@@ -4,8 +4,8 @@
   "description": "Realización de la práctica de fundamentos de node.js del bootcamp web de KeepCoding",
   "main": "index.js",
   "scripts": {
-    "start": "node ./bin/www",
-    "dev": "cross-env DEBUG=nodeapi* nodemon",
+    "start": "cross-env NODE_ENV=production node ./bin/www",
+    "dev": "cross-env DEBUG=nodeapi* nodemon ./bin/www",
     "install_db": "node ./install_db"
   },
   "repository": {
