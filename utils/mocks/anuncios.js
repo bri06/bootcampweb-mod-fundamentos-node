@@ -15,14 +15,14 @@ const anunciosMocks = [
   },
   {
     nombre: "Huawei",
-    venta: false,
+    venta: true,
     precio: 400.00,
     foto: "images/anuncios/huawei-3737335_640.jpg",
     tags: [ "lifestyle", "mobile"]
   },
   {
     nombre: "Kia",
-    venta: false,
+    venta: true,
     precio: 60000.00,
     foto: "images/anuncios/sports-car-3383404_640.jpg",
     tags: [ "lifestyle", "motor"]
@@ -36,7 +36,7 @@ const anunciosMocks = [
   },
   {
     nombre: "Samsung",
-    venta: false,
+    venta: true,
     precio: 600.00,
     foto: "images/anuncios/smartphone-1283938_640.jpg",
     tags: [ "lifestyle", "mobile"]

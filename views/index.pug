@@ -19,7 +19,7 @@ block content
                           strong= anuncio.nombre
                           p= `${anuncio.precio} €`
                           if anuncio.venta
-                            p Se vende
+                            p(style="color: #00CC00") Se vende
                           else
-                            p Se busca
+                            p(style="color: #FC4402") Se busca
                           article(style="font-size: .9rem")= anuncio.tags
