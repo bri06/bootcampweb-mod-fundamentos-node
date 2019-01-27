@@ -4,7 +4,7 @@ module.exports.getAnuncios = async (req, res, next) => {
   try {
     let { nombre, venta, tag, precio, skip, limit, sort } = req.query;
     const anuncioFiltrado = Anuncio.filtrado(nombre, venta, tag, precio);
-    const anuncios = await Anuncio.listar(anuncioFiltrado, parseInt(limit), parseInt(skip), sort );
+    const anuncios = await Anuncio.listar(anuncioFiltrado, parseInt(limit), parseInt(skip), sort);
     res.status(200).json({
       results: anuncios,
       message: 'Lista de anuncios'
@@ -16,7 +16,7 @@ module.exports.getAnuncios = async (req, res, next) => {
 
 module.exports.listarTags = async (req, res, next) => {
   try {
-    const listaTags = await Anuncio.find({}, {'tags': 1});
+    const listaTags = await Anuncio.find({}, { 'tags': 1 });
     const tags = getTags(listaTags);
     res.status(200).json({
       results: tags,
@@ -31,7 +31,7 @@ module.exports.createAnuncio = async (req, res, next) => {
   try {
     const { body: data } = req;
     const anuncio = new Anuncio(data);
-  
+
     const anuncioCreado = await anuncio.save();
     res.status(201).json({
       data: anuncioCreado,
@@ -44,7 +44,10 @@ module.exports.createAnuncio = async (req, res, next) => {
 
 const getTags = listaTags => {
   let arrTags = [];
-  listaTags.forEach(data => data.tags.forEach(tag => arrTags.push(tag))); //Nos devolvera tags pero repetidos
+  listaTags.forEach(data => {
+    data.tags.forEach(tag => {
+      if (!arrTags.includes(tag)) arrTags.push(tag);
+    });
+  });
   return arrTags;
 }
-
