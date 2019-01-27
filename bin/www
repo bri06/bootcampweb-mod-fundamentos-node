@@ -5,7 +5,6 @@
  */
 
 var app = require('../index');
-console.log(app);
 var debug = require('debug')('nodeapi:server');
 var http = require('http');
 
