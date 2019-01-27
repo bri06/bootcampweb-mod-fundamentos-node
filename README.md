@@ -61,3 +61,11 @@ Ruta publica:
 
 Listar tags:
   http://localhost:3000/api/anuncios/tags
+
+## Ejemplos de llamadas:
+
+Ejemplo de recibir la lista de anuncios aplicando todos los filtros:
+http://localhost:3000/api/anuncios?tag=mobile&venta=false&nombre=ip&precio=50-&start=0&limit=2&sort=precio
+
+Para mostrar los anuncios con filtros y paginación:
+http://localhost:3000/anuncios?start=1&limit=3&sort=name&tag=lifestyle
