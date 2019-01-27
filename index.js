@@ -32,7 +32,28 @@ app.get('/', (req, res, next) => {
   res.redirect('/anuncios');
 });
 
+// Error handler
+app.use((err, req, res, next) => {
+  if (err.array) {
+    err.status = 442;
+    const errInfo = err.array({ onlyFirstError: true })[0];
+    err.message = isAPIRequest(req) ? { message: 'Not valid', errors: err.mapped() } : `No valido - ${errInfo.param} ${errInfo.msg}`;
+  }
+  res.status(err.status || 500);
+  if (isAPIRequest(req)) {
+    res.json({ success: false, error: err.message });
+    return;
+  }
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.render('error');
+});
+
+function isAPIRequest(req) {
+  return req.originalUrl.indexOf('/apiv') === 0;
+}
+
 // server initialization
-const server = app.listen(8000, () => {
+const server = app.listen(3000, () => {
   console.log(`Listening on http://localhost:${server.address().port}`);
 });

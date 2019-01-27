@@ -1,0 +1,10 @@
+extends index
+
+block content
+    .container.main-content(style="padding-top: 30px")
+        article.message.is-danger
+            .message-body
+                h1.title.has-text-danger= error.message
+                h2.subtitle.has-text-danger= error.status
+                if error.stack
+                    pre.content.is-small #{error.stack}
