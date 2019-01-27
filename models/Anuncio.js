@@ -24,14 +24,15 @@ anuncioSchema.statics.filtrado = (nombre, venta, tag, precio) => {
   if (tag) filter.tags = { $in: [tag] };
   if (precio) {
     const [gte, lte] = precio.split('-');
-    if (gte && lte) {
+    if (lte === undefined){
+      filter.precio = gte;
+    } else if (gte && lte) {
+      console.log(gte);
       filter.precio = { $gte: gte, $lte: lte };
     } else if (gte && !lte) {
       filter.precio = { $gte: gte };
     } else if (!gte && lte) {
       filter.precio = { $lte: lte };
-    } else {
-      filter.precio = { $gte: gte };
     }
   }
 

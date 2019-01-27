@@ -3,7 +3,7 @@
  */
 const readLine = require('readline');
 const db = require('./lib/connectMongoose');
-const Anuncio = require('./models/Anuncio'); //le pasamos el modelo
+const Anuncio = require('./models/Anuncio');
 const anunciosMocks = require('./utils/mocks/anuncios');
 
 db.once('open', async () => {
@@ -39,7 +39,6 @@ const insertAnuncios = async () => {
   const deleted = await Anuncio.deleteMany();
   console.log('Borrados: ',deleted.n);
   const added = await Anuncio.insertMany(anunciosMocks);
-  //Borrar consoles luego
   console.log(added);
   console.log(`Insertados ${added.length} anuncios`);
 }
