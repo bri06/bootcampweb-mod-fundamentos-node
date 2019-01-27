@@ -23,6 +23,9 @@ Nodepop
 
 Para inicializar el proyecto:
 
+Es necesario tener instalado [node](https://nodejs.org/es/) y [mongoDB](https://docs.mongodb.com/manual/installation/#mongodb-community-edition)
+
+
 ```shell
 npm install
 ```
