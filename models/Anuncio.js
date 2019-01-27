@@ -21,7 +21,10 @@ anuncioSchema.statics.filtrado = (nombre, venta, tag, precio) => {
   
   if (nombre) filter.nombre = new RegExp('^' + nombre, "i");
   if (venta) filter.venta = (venta.toLowerCase() == 'true'); 
-  if (tag) filter.tags = { $in: [tag] };
+  if (tag) {
+    const tags = tag.split(',');
+    filter.tags = { $in: tags };
+  }
   if (precio) {
     const [gte, lte] = precio.split('-');
     if (lte === undefined){

@@ -18,4 +18,8 @@ block content
                         .card-content
                           strong= anuncio.nombre
                           p= `${anuncio.precio} €`
-                          article= anuncio.tags
+                          if anuncio.venta
+                            p Se vende
+                          else
+                            p Se busca
+                          article(style="font-size: .9rem")= anuncio.tags
