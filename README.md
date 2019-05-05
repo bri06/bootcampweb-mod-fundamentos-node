@@ -104,3 +104,4 @@ Aplicacion del ejercicio 1: [Nodepop](http://ec2-3-17-190-49.us-east-2.compute.a
 Para ver la cabecera personalizada, hay que acceder a la ruta de las imagenes, como por ejemplo esta: http://ec2-3-17-190-49.us-east-2.compute.amazonaws.com/images/anuncios/huawei-3737335_640.jpg
 
 Web del ejercicio 2: [Portfolio](http://3.17.190.49)
+Para la solución de este ejercicio se ha utilizado la web del módulo de html-javascript del bootcamp, en vez de una plantilla de bootstrap.
